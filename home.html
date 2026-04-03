@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>💜 Our Memories</title>
+
+<style>
+body {
+  margin: 0;
+  font-family: sans-serif;
+  background: linear-gradient(135deg, #e6ccff, #b266ff);
+  overflow-x: hidden;
+  color: white;
+}
+
+/* กล่องใสแบบหน้าแรก */
+.section {
+  margin: 40px 20px;
+  padding: 25px;
+  border-radius: 25px;
+  text-align: center;
+  background: rgba(255,255,255,0.2);
+  backdrop-filter: blur(15px);
+  box-shadow: 0 0 25px rgba(0,0,0,0.2);
+
+  opacity: 0;
+  transform: translateY(50px) scale(0.95);
+  transition: 0.8s ease;
+}
+
+/* ตอนโผล่ */
+.section.show {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+/* รูป */
+img {
+  width: 100%;
+  max-width: 260px;
+  border-radius: 20px;
+  margin: 15px 0;
+  box-shadow: 0 0 20px rgba(0,0,0,0.3);
+  transition: 0.5s;
+}
+
+/* รูปเด้ง */
+.section.show img {
+  transform: scale(1.08);
+}
+
+/* ข้อความ */
+.text {
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+/* หัวข้อ */
+h1, h2 {
+  margin-bottom: 10px;
+}
+
+/* เอฟเฟกต์หัวใจลอย */
+.heart {
+  position: fixed;
+  color: rgba(255,255,255,0.5);
+  animation: float 6s linear infinite;
+}
+
+@keyframes float {
+  0% {transform: translateY(100vh) scale(1);}
+  100% {transform: translateY(-10vh) scale(1.2);}
+}
+</style>
+
+</head>
+<body>
+
+<div class="section">
+  <h1>💜 ความรู้สึก 💜</h1>
+  <p>เลื่อนลงดูนะ 😊</p>
+</div>
+
+<div class="section">
+  <h2>เค้ารักธามมากๆน้าาคั้ปป</h2>
+  <img src="img/1.jpg">
+  <div class="text">
+    ที่ผ่านมาเค้าทุ่มเทเพื่อธามสุดตัวเลยนะ<br>
+    ถึงจะทำตัวไม่น่ารักในบางทีแต่เค้ารักธามที่สุดนะคะ 💜
+  </div>
+</div>
+
+<div class="section">
+  <h2>เที่ยววว</h2>
+  <img src="img/2.jpg">
+  <div class="text">
+    เค้าอยากไปเที่ยวกับธามเยอะๆเลยยยยย<br>
+    เค้าอยากไปทุกที่ที่มีธามเลย ❤️
+  </div>
+</div>
+
+<div class="section">
+  <h2>ช่วงเวลาดีๆ</h2>
+  <img src="img/3.jpg">
+  <div class="text">
+    เวลาที่ได้อยู่กับธาม<br>
+    ออมมีความสุขมากจริงๆ 💕
+  </div>
+</div>
+
+<div class="section">
+  <h2>วันนี้</h2>
+  <div class="text">
+    ขอบคุณที่ยังอยู่ด้วยกันนะ 💜<br><br>
+    ถึงจะไม่ได้เจอนานแต่ออมไม่เคยรักธามน้อยลงเลยนะ  
+    ออมคิดถึงธามมากจริงๆ 💜  
+    รักนะไอ่อ้วน
+  </div>
+</div>
+
+<script>
+// เอฟเฟกต์เลื่อนแล้วโผล่
+const sections = document.querySelectorAll(".section");
+
+window.addEventListener("scroll", () => {
+  sections.forEach(sec => {
+    const top = sec.getBoundingClientRect().top;
+    if (top < window.innerHeight - 80) {
+      sec.classList.add("show");
+    }
+  });
+});
+
+window.dispatchEvent(new Event("scroll"));
+
+// หัวใจลอยแบบหน้าแรก
+for(let i=0;i<40;i++){
+  let heart = document.createElement("div");
+  heart.className = "heart";
+  heart.style.left = Math.random()*100 + "vw";
+  heart.style.fontSize = (Math.random()*20+10) + "px";
+  heart.style.animationDuration = (Math.random()*4+4) + "s";
+  heart.innerHTML = "💜";
+  document.body.appendChild(heart);
+}
+</script>
+
+</body>
+</html>

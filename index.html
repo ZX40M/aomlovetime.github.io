@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For Time 💜</title>
+
+<style>
+body {
+  margin: 0;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(135deg, #d9b3ff, #b266ff);
+  font-family: sans-serif;
+  overflow: hidden;
+}
+
+/* กล่องหลัก */
+.container {
+  background: rgba(255,255,255,0.2);
+  padding: 30px;
+  border-radius: 20px;
+  text-align: center;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 0 20px rgba(0,0,0,0.2);
+}
+
+h1 {
+  color: white;
+  margin-bottom: 10px;
+}
+
+p {
+  color: white;
+  font-size: 14px;
+}
+
+/* ช่องกรอก */
+input {
+  padding: 10px;
+  border-radius: 10px;
+  border: none;
+  outline: none;
+  margin-top: 10px;
+  text-align: center;
+  font-size: 16px;
+}
+
+/* ปุ่ม */
+button {
+  margin-top: 15px;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 20px;
+  background: #8000ff;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #6600cc;
+}
+
+/* ข้อความ error */
+#error {
+  color: #ffd6ff;
+  margin-top: 10px;
+}
+
+/* หัวใจลอย */
+.heart {
+  position: absolute;
+  color: rgba(255,255,255,0.5);
+  animation: float 6s linear infinite;
+}
+
+@keyframes float {
+  0% {transform: translateY(100vh);}
+  100% {transform: translateY(-10vh);}
+}
+</style>
+
+</head>
+<body>
+
+<div class="container">
+  <h1>🔐 สำหรับธาม 💜</h1>
+  <p>ใส่วันครบรอบของเรา</p>
+
+  <input type="password" id="password" placeholder="DDMMYY">
+  <br>
+  <button onclick="checkPassword()">เข้าเลย</button>
+
+  <div id="error"></div>
+</div>
+
+<script>
+const correctPassword = "200568"; // 🔥 แก้ตรงนี้
+
+function checkPassword() {
+  const input = document.getElementById("password").value;
+  const error = document.getElementById("error");
+
+  if(input === correctPassword){
+    window.location.href = "home.html"; // 🔥 หน้าเว็บหลัก
+  } else {
+    error.innerHTML = "จำวันของเราไม่ได้หรอ 💔";
+  }
+}
+
+/* สร้างหัวใจลอย */
+for(let i=0;i<20;i++){
+  let heart = document.createElement("div");
+  heart.className = "heart";
+  heart.style.left = Math.random()*100 + "vw";
+  heart.style.fontSize = (Math.random()*20+10) + "px";
+  heart.style.animationDuration = (Math.random()*5+5) + "s";
+  heart.innerHTML = "💜";
+  document.body.appendChild(heart);
+}
+</script>
+
+</body>
+</html>
