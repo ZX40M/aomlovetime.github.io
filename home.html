@@ -14,7 +14,7 @@ body {
   color: white;
 }
 
-/* กล่องใสแบบหน้าแรก */
+/* กล่อง */
 .section {
   margin: 40px 20px;
   padding: 25px;
@@ -29,13 +29,11 @@ body {
   transition: 0.8s ease;
 }
 
-/* ตอนโผล่ */
 .section.show {
   opacity: 1;
   transform: translateY(0) scale(1);
 }
 
-/* รูป */
 img {
   width: 100%;
   max-width: 260px;
@@ -45,27 +43,27 @@ img {
   transition: 0.5s;
 }
 
-/* รูปเด้ง */
 .section.show img {
   transform: scale(1.08);
 }
 
-/* ข้อความ */
 .text {
   font-size: 15px;
   line-height: 1.6;
 }
 
-/* หัวข้อ */
 h1, h2 {
   margin-bottom: 10px;
 }
 
-/* เอฟเฟกต์หัวใจลอย */
+/* 💜 หัวใจ (แก้แล้ว) */
 .heart {
   position: fixed;
-  color: rgba(255,255,255,0.5);
-  animation: float 6s linear infinite;
+  top: 0;
+  color: #ffffff;
+  animation: float 8s linear infinite;
+  z-index: 9999;
+  pointer-events: none;
 }
 
 @keyframes float {
@@ -120,29 +118,33 @@ h1, h2 {
 </div>
 
 <script>
-// เอฟเฟกต์เลื่อนแล้วโผล่
-const sections = document.querySelectorAll(".section");
+window.onload = function() {
 
-window.addEventListener("scroll", () => {
-  sections.forEach(sec => {
-    const top = sec.getBoundingClientRect().top;
-    if (top < window.innerHeight - 80) {
-      sec.classList.add("show");
-    }
+  // เอฟเฟกต์เลื่อน
+  const sections = document.querySelectorAll(".section");
+
+  window.addEventListener("scroll", () => {
+    sections.forEach(sec => {
+      const top = sec.getBoundingClientRect().top;
+      if (top < window.innerHeight - 80) {
+        sec.classList.add("show");
+      }
+    });
   });
-});
 
-window.dispatchEvent(new Event("scroll"));
+  window.dispatchEvent(new Event("scroll"));
 
-// หัวใจลอยแบบหน้าแรก
-for(let i=0;i<40;i++){
-  let heart = document.createElement("div");
-  heart.className = "heart";
-  heart.style.left = Math.random()*100 + "vw";
-  heart.style.fontSize = (Math.random()*20+10) + "px";
-  heart.style.animationDuration = (Math.random()*4+4) + "s";
-  heart.innerHTML = "💜";
-  document.body.appendChild(heart);
+  // 💜 หัวใจลอย (แก้แล้ว)
+  for(let i=0;i<40;i++){
+    let heart = document.createElement("div");
+    heart.className = "heart";
+    heart.style.left = Math.random()*100 + "vw";
+    heart.style.fontSize = (Math.random()*20+12) + "px";
+    heart.style.animationDuration = (Math.random()*6+6) + "s";
+    heart.innerHTML = "💜";
+    document.body.appendChild(heart);
+  }
+
 }
 </script>
 
